@@ -1,0 +1,32 @@
+<div class="container">
+  <h2>Gestion des types de stade</h2>
+  <div class="card shadow mb-4">
+    <div class="card-body">
+      <app-update-categorie
+        [categorie]="updatedCat"
+        [ajout]="ajout"
+        (categorieUpdated)="categorieUpdated($event)">
+      </app-update-categorie>
+    </div>
+  </div>
+  <div class="card shadow mb-4">
+    <div class="card-body">
+      <table class="table table-striped">
+        <thead><tr><th>ID</th><th>Type de stade</th><th>Actions</th></tr></thead>
+        <tbody>
+          @for (cat of categories; track cat.idCat) {
+            <tr>
+              <td>{{cat.idCat}}</td>
+              <td>{{cat.nomCat}}</td>
+              <td>
+                <button type="button" class="btn btn-success me-2" (click)="updateCat(cat)">Modifier</button>
+                <button type="button" class="btn btn-danger" (click)="supprimerCategorie(cat)">Supprimer</button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,16 @@
+<form #categorieForm="ngForm" (ngSubmit)="saveCategorie()">
+  @if (!ajout) {
+    <div class="col-sm-4 col-md-4 col-lg-4 mb-2">
+      <label for="idCat">ID du type</label>
+      <input id="idCat" type="number" [(ngModel)]="categorie.idCat" name="idCat" class="form-control" readonly required>
+    </div>
+  }
+  <div class="col-sm-6 col-md-6 col-lg-6 mb-2">
+    <label for="nomCat">Type de stade</label>
+    <input id="nomCat" type="text" [(ngModel)]="categorie.nomCat" name="nomCat" class="form-control" placeholder="Nom du type de stade" required>
+  </div>
+  <button type="submit" [disabled]="categorieForm.invalid" class="btn btn-success">
+    {{ ajout ? 'Ajouter' : 'Modifier' }}
+  </button>
+</form>
+

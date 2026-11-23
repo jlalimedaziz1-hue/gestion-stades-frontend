@@ -1,0 +1,54 @@
+<div class="container">
+    <div>
+      <h2>Modifier un stade :</h2>             
+    </div>
+         <form #updateForm="ngForm" (ngSubmit)="updateStade()">         
+             <div  class="col-sm-2 col-md-2 col-lg-2">
+               <label >ID du stade</label>
+               <input type="number" [(ngModel)]="currentStade.idStade"  
+                   name="idStade" class="form-control" readonly required>
+              </div>
+         
+             <div class="col-sm-4 col-md-4 col-lg-4" >
+               <label >Nom du stade</label>
+               <input  type="text"[(ngModel)]= "currentStade.nomStade"  
+                   name="nomStade" class="form-control" required>
+             </div>
+
+             <div class="col-sm-2 col-md-2 col-lg-2">
+               <label >Capacité du stade</label>
+           <input type="number" min="1" [(ngModel)]= "currentStade.capaciteStade"  
+                   name="capaciteStade" class="form-control" required>
+             </div>
+
+             <div class="col-sm-4 col-md-4 col-lg-4">
+                 <label >Date ouverture</label>
+                <input  type="date"  [ngModel]="currentStade.dateOuverture | date: 'yyyy-MM-dd'" 
+                   (ngModelChange)=" currentStade.dateOuverture= $event"   name="dateOuverture" 
+                   class="form-control" required>
+             </div>
+
+             <div class="col-sm-4 col-md-4 col-lg-4">
+              <label>Type de stade</label>
+              <select class="form-control form-control-lg" id="idCat" name="idCat" [(ngModel)]="updatedCatId" required>
+                @for(cat of categories; track cat.idCat)
+                {
+                  <option  [ngValue]="cat.idCat">  {{cat.nomCat}} </option>
+                 }
+             </select>
+
+              <!-- <select class="form-control form-control-lg" id="idCat" name="idCat"   
+                    [(ngModel)]="updatedCatId">        
+                      <option *ngFor="let cat of categories" [value]="cat.idCat" >   
+                                   {{cat.nomCat}}
+                      </option>
+               </select>    -->                  
+             </div>
+        
+             
+              <div class="mt-2">
+<button type="submit" [disabled]="updateForm.invalid" class="btn btn-success">Modifier</button>
+              </div>  
+         </form>
+</div>       
+
